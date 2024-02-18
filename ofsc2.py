@@ -27,7 +27,6 @@ st.title("👨‍💻 Wazzup!!!! What do you want to know about the OFSC?")
 apikey = st.sidebar.text_area("Please enter enter your API Key.")
 prompt = st.text_area("Please enter what you want to know about the OFSC Accreditation process.")
 
-
 # Load VectorDB
 if st.sidebar.button("Load OFSC Facsheets into Vector DB if loading the page for the first time.", type="primary"):
       with open("ofsc.txt") as f:
@@ -52,7 +51,6 @@ if st.sidebar.button("Load OFSC Facsheets into Vector DB if loading the page for
       st.write(len(collection.get()['documents']))
       # st.sidebar.write("OFSC Vector DB created. With " + len(collection.get()['documents']) + " rows." )
 
-'''
 if st.button("Submit to AI", type="primary"):
      query_results = collection.query(
           query_texts=[prompt],
@@ -81,4 +79,3 @@ if st.button("Submit to AI", type="primary"):
      )
      
      st.write(response.choices[0].message.content)
-'''
