@@ -9,7 +9,7 @@ from chromadb.utils import embedding_functions
 
 CHROMA_DATA_PATH = "chroma_data/"
 EMBED_MODEL = "all-MiniLM-L6-v2"
-COLLECTION_NAME = "demo_docs"
+COLLECTION_NAME = "ofsc_docs"
 
 client = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
 embedding_func = embedding_functions.SentenceTransformerEmbeddingFunction(
@@ -23,34 +23,35 @@ collection = client.get_or_create_collection(
  )
 
 # The UI Part
-st.title("👨‍💻 Wazzup!!!! Let's Chat with the Hansard Senate Estimates for Employment Department (DEWR) - 2023")
+st.title("👨‍💻 Wazzup!!!! What do you want to know about the OFSC?")
 apikey = st.sidebar.text_area("Please enter enter your API Key.")
-prompt = st.text_area("Please enter what you want to know from the hearing for the Employment Department.")
+prompt = st.text_area("Please enter what you want to know about the OFSC Accreditation process.")
 
 
 # Load VectorDB
-# if st.sidebar.button("Load Hansard into Vector DB if loading the page for the first time.", type="primary"):
-#      with open("hansard-utf8.txt") as f:
-#          hansard = f.read()
-#          text_splitter = RecursiveCharacterTextSplitter(
-#              chunk_size=500,
-#              chunk_overlap=20,
-#              length_function=len,
-#              is_separator_regex=False,
-#          )
-#     
-#      texts = text_splitter.create_documents([hansard])
-#      documents = text_splitter.split_text(hansard)[:len(texts)]
-#     
-#      collection.add(
-#           documents=documents,
-#           ids=[f"id{i}" for i in range(len(documents))],
-#      )
-#   
-      # number of rows
+if st.sidebar.button("Load Hansard into Vector DB if loading the page for the first time.", type="primary"):
+      with open("5. Fact Sheet - How to appeal a decision of the Federal Safety Commissioner.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+     
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+   
+      number of rows
       # st.write(len(collection.get()['documents']))
       # st.sidebar.write("Hansard Vector DB created. With " + len(collection.get()['documents']) + " rows." )
 
+'''
 if st.button("Submit to AI", type="primary"):
      query_results = collection.query(
           query_texts=[prompt],
@@ -79,3 +80,4 @@ if st.button("Submit to AI", type="primary"):
      )
      
      st.write(response.choices[0].message.content)
+'''
