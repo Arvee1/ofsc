@@ -49,7 +49,7 @@ if st.sidebar.button("Load OFSC Facsheets into Vector DB if loading the page for
       f.close()
      
       # number of rows
-      # st.write(len(collection.get()['documents']))
+      st.write(len(collection.get()['documents']))
       # st.sidebar.write("OFSC Vector DB created. With " + len(collection.get()['documents']) + " rows." )
 
 '''
@@ -82,4 +82,3 @@ if st.button("Submit to AI", type="primary"):
      
      st.write(response.choices[0].message.content)
 '''
-st.write(len(collection.get()['documents']))
