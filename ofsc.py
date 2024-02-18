@@ -392,7 +392,7 @@ if st.sidebar.button("Load Hansard into Vector DB if loading the page for the fi
      
       # number of rows
       # st.write(len(collection.get()['documents']))
-      st.sidebar.write("OFSC Vector DB created. With " + len(collection.get()['documents']) + " rows." )
+      # st.sidebar.write("OFSC Vector DB created. With " + len(collection.get()['documents']) + " rows." )
 
 '''
 if st.button("Submit to AI", type="primary"):
@@ -424,3 +424,4 @@ if st.button("Submit to AI", type="primary"):
      
      st.write(response.choices[0].message.content)
 '''
+st.write(len(collection.get()['documents']))
