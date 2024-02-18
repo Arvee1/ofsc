@@ -38,7 +38,7 @@ if st.sidebar.button("Load Hansard into Vector DB if loading the page for the fi
               length_function=len,
               is_separator_regex=False,
           )
-     
+           
       texts = text_splitter.create_documents([hansard])
       documents = text_splitter.split_text(hansard)[:len(texts)]
      
@@ -46,10 +46,353 @@ if st.sidebar.button("Load Hansard into Vector DB if loading the page for the fi
            documents=documents,
            ids=[f"id{i}" for i in range(len(documents))],
       )
-   
-      number of rows
+      f.close()
+     
+      with open("Applying the Scheme to Directly funded building work accessible version_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Applying the Scheme to Indirectly funded building work accessible version.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - Advice for Funding Recipients_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+     
+      with open("Fact Sheet - Advice to Agencies.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - Complaints Process_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - Corrective Action Reports and the auditing process - 20102023.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - Definitions of ‘Builder’ and ‘Building Work’.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - Federal Safety Officers (FSOs)_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - How to Get Accredited and Stay Accredited - April 2023.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - International Companies and the Accreditation Process.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - Joint Venture Arrangements_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet - Scheme Rule Changes.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet – Contracting for Australian Government funded building work.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet – Federal Safety Commissioner.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet – Hazards Research Project_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet – Powers of the Federal Safety Officers_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet – Safe Work Method Statements (SWMS).txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet – Small builders and the Scheme_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+      with open("Fact Sheet Verification of Competency - Mobile Plant_0.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+     
+      # number of rows
       # st.write(len(collection.get()['documents']))
-      # st.sidebar.write("Hansard Vector DB created. With " + len(collection.get()['documents']) + " rows." )
+      st.sidebar.write("OFSC Vector DB created. With " + len(collection.get()['documents']) + " rows." )
 
 '''
 if st.button("Submit to AI", type="primary"):
