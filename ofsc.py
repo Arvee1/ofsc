@@ -29,7 +29,7 @@ prompt = st.text_area("Please enter what you want to know about the OFSC Accredi
 
 
 # Load VectorDB
-if st.sidebar.button("Load Hansard into Vector DB if loading the page for the first time.", type="primary"):
+if st.sidebar.button("Load OFSC Facsheets into Vector DB if loading the page for the first time.", type="primary"):
       with open("5. Fact Sheet - How to appeal a decision of the Federal Safety Commissioner.txt") as f:
           hansard = f.read()
           text_splitter = RecursiveCharacterTextSplitter(
