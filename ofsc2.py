@@ -61,7 +61,7 @@ if st.button("Submit to AI", type="primary"):
      augment_query = str(query_results["documents"])
     
      # client_AI = OpenAI(api_key=apikey)
-     client_AI = OpenAI(api_key=st.secrets["apikey"])
+     client_AI = OpenAI(api_key=st.secrets["api_key"])
      response = client_AI.chat.completions.create(
        model="gpt-3.5-turbo",
        messages=[
