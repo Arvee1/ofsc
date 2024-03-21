@@ -1,8 +1,12 @@
+import streamlit as st
+#MainMenu {
+  visibility: hidden;
+}
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-import streamlit as st
+
 from openai import OpenAI
 import chromadb
 from chromadb.utils import embedding_functions
