@@ -7,3 +7,4 @@ ollama
 openai
 SpeechRecognition
 replicate
+pyaudio
