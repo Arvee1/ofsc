@@ -145,13 +145,13 @@ if st.button("Say something", type="primary"):
           }
      )
      
-    st.write("what you said: " + text['text'])
-    prompt = text['text']
+     st.write("what you said: " + text['text'])
+     prompt = text['text']
 
-    # The mistralai/mixtral-8x7b-instruct-v0.1 model can stream output as it's running.
-    result_ai = ""
-    # The meta/llama-2-7b-chat model can stream output as it's running.
-    for event in replicate.stream(
+     # The mistralai/mixtral-8x7b-instruct-v0.1 model can stream output as it's running.
+     result_ai = ""
+     # The meta/llama-2-7b-chat model can stream output as it's running.
+     for event in replicate.stream(
             "meta/llama-2-7b-chat",
             input={
                 "top_k": 0,
@@ -164,7 +164,7 @@ if st.button("Say something", type="primary"):
                 "prompt_template": "<s>[INST] <<SYS>>\n{system_prompt}\n<</SYS>>\n\n{prompt} [/INST]",
                 "presence_penalty": 0
             },
-    ):
+     ):
         result_ai = result_ai + (str(event))
-
-    st.write(result_ai)
+     
+     st.write(result_ai)
