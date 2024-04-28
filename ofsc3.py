@@ -11,6 +11,7 @@ import speech_recognition as sr
 import replicate
 import pyaudio
 import wave
+from audiorecorder import audiorecorder
 
 # initialize
 r = sr.Recognizer()
@@ -132,7 +133,7 @@ if st.button("Say something", type="primary"):
      wf.writeframes(b''.join(frames))
      wf.close()
 
-     soundfile = open("output.wav.wav", "rb")
+     soundfile = open("output.wav", "rb")
      text = replicate.run(
           "vaibhavs10/incredibly-fast-whisper:3ab86df6c8f54c11309d4d1f930ac292bad43ace52d10c80d87eb258b3c9f79c",
           input={
@@ -168,3 +169,53 @@ if st.button("Say something", type="primary"):
         result_ai = result_ai + (str(event))
      
      st.write(result_ai)
+
+
+if st.button("Say Audio", type="primary"):
+     audio = audiorecorder("Click to record", "Click to stop recording")
+     
+     if len(audio) > 0:
+          # To play audio in frontend:
+          st.audio(audio.export().read())  
+          
+          # To save audio to a file, use pydub export method:
+          audio.export("audio.wav", format="wav")
+          
+          # To get audio properties, use pydub AudioSegment properties:
+          st.write(f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds")
+          
+          soundfile = open("audio.wav", "rb")
+          text = replicate.run(
+               "vaibhavs10/incredibly-fast-whisper:3ab86df6c8f54c11309d4d1f930ac292bad43ace52d10c80d87eb258b3c9f79c",
+               input={
+                 "task": "transcribe",
+                 "audio": soundfile,
+                 "language": "None",
+                 "timestamp": "chunk",
+                 "batch_size": 64,
+                 "diarise_audio": False
+               }
+          )
+          st.write("what you said: " + text['text'])
+          prompt = text['text']
+
+          # The mistralai/mixtral-8x7b-instruct-v0.1 model can stream output as it's running.
+          result_ai = ""
+          # The meta/llama-2-7b-chat model can stream output as it's running.
+          for event in replicate.stream(
+                 "meta/llama-2-7b-chat",
+                 input={
+                     "top_k": 0,
+                     "top_p": 1,
+                     "prompt": prompt,
+                     "temperature": 0.75,
+                     "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
+                     "length_penalty": 1,
+                     "max_new_tokens": 800,
+                     "prompt_template": "<s>[INST] <<SYS>>\n{system_prompt}\n<</SYS>>\n\n{prompt} [/INST]",
+                     "presence_penalty": 0
+                 },
+          ):
+             result_ai = result_ai + (str(event))
+          
+          st.write(result_ai)
