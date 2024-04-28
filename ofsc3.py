@@ -173,7 +173,7 @@ if st.button("Say something", type="primary"):
 
 if st.button("Say Audio", type="primary"):
      audio = audiorecorder("Click to record", "Click to stop recording")
-     print(len(audio))
+     st.write("Audio Length: " + len(audio))
            
      if len(audio) > 0:
           # To play audio in frontend:
