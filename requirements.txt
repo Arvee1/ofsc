@@ -7,5 +7,3 @@ ollama
 openai
 SpeechRecognition
 replicate
-portaudio19-dev
-python3-all-dev
