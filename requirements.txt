@@ -5,5 +5,5 @@ sentence_transformers
 chromadb
 ollama
 openai
-speech-recognition
+SpeechRecognition
 replicate
