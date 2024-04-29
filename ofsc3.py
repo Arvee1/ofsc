@@ -207,7 +207,7 @@ if len(audio) > 0:
      )
      augment_query = str(query_results["documents"])
      st.write(augment_query)
-     
+     st.write("###AI Response###")
      # The mistralai/mixtral-8x7b-instruct-v0.1 model can stream output as it's running.
      result_ai = ""
      # The meta/llama-2-7b-chat model can stream output as it's running.
