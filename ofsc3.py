@@ -67,7 +67,7 @@ if st.button("Submit to AI", type="primary"):
           query_texts=[prompt],
           # include=["documents", "embeddings"],
           include=["documents"],
-          n_results=20,
+          n_results=15,
      )
      augment_query = str(query_results["documents"])
 
@@ -82,7 +82,7 @@ if st.button("Submit to AI", type="primary"):
                 "temperature": 0.75,
                 "system_prompt": "You are a helpful, respectful and honest assistant. Your answers will be concise.",
                 "length_penalty": 1,
-                "max_new_tokens": 800,
+                "max_new_tokens": 1000,
                 "prompt_template": "<s>[INST] <<SYS>>\n{system_prompt}\n<</SYS>>\n\n{prompt} [/INST]",
                 "presence_penalty": 0
             },
@@ -202,7 +202,7 @@ if len(audio) > 0:
           query_texts=[prompt],
           # include=["documents", "embeddings"],
           include=["documents"],
-          n_results=20,
+          n_results=15,
      )
      augment_query = str(query_results["documents"])
      # st.write(augment_query)
