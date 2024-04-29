@@ -74,101 +74,21 @@ if st.button("Submit to AI", type="primary"):
      result_ai = ""
      # The meta/llama-2-7b-chat model can stream output as it's running.
      for event in replicate.stream(
-            "meta/llama-2-7b-chat",
-            input={
-                "top_k": 0,
-                "top_p": 1,
-                "prompt": augment_query,
-                "temperature": 0.75,
-                "system_prompt": "You are a helpful, respectful and honest assistant. Your answers will be concise.",
-                "length_penalty": 1,
-                "max_new_tokens": 4000,
-                "prompt_template": "<s>[INST] <<SYS>>\n{system_prompt}\n<</SYS>>\n\n{prompt} [/INST]",
-                "presence_penalty": 0
-            },
+         "mistralai/mixtral-8x7b-instruct-v0.1",
+         input={
+             "top_k": 50,
+             "top_p": 0.9,
+             "prompt": augment_query,
+             "temperature": 0.6,
+             "system_prompt": "You are a very helpful assistant that provides your response in 1 sentence.",
+             "length_penalty": 1,
+             "max_new_tokens": 1024,
+             "prompt_template": "<s>[INST] {prompt} [/INST] ",
+             "presence_penalty": 0
+         },
      ):
-        result_ai = result_ai + (str(event))
-     
+         result_ai = result_ai + (str(event))
      st.write(result_ai)
-
-# if st.button("Say something", type="primary"):
-     # chunk = 1024  # Record in chunks of 1024 samples
-     # sample_format = pyaudio.paInt16  # 16 bits per sample
-     # channels = 2
-     # fs = 44100  # Record at 44100 samples per second
-     # seconds = 3
-     # filename = "output.wav"
-     
-     # p = pyaudio.PyAudio()  # Create an interface to PortAudio
-     # 
-     # print('Recording')
-     
-     # stream = p.open(format=sample_format,
-                     # channels=channels,
-                     # rate=fs,
-                     # frames_per_buffer=chunk,
-                     # input=True)
-     
-     # frames = []  # Initialize array to store frames
-     
-     # Store data in chunks for 3 seconds
-     # for i in range(0, int(fs / chunk * seconds)):
-         # data = stream.read(chunk)
-         # frames.append(data)
-     
-     # Stop and close the stream
-     # stream.stop_stream()
-     # stream.close()
-     # Terminate the PortAudio interface
-     # p.terminate()
-     
-     # print('Finished recording')
-     
-     # Save the recorded data as a WAV file
-     # wf = wave.open(filename, 'wb')
-     # wf.setnchannels(channels)
-     # wf.setsampwidth(p.get_sample_size(sample_format))
-     # wf.setframerate(fs)
-     # wf.writeframes(b''.join(frames))
-     # wf.close()
-
-     # soundfile = open("output.wav", "rb")
-     # text = replicate.run(
-          # "vaibhavs10/incredibly-fast-whisper:3ab86df6c8f54c11309d4d1f930ac292bad43ace52d10c80d87eb258b3c9f79c",
-          # input={
-            # "task": "transcribe",
-            # "audio": soundfile,
-            # "language": "None",
-            # "timestamp": "chunk",
-            # "batch_size": 64,
-            # "diarise_audio": False
-          # }
-     # )
-     
-     # st.write("what you said: " + text['text'])
-     # prompt = text['text']
-
-     # The mistralai/mixtral-8x7b-instruct-v0.1 model can stream output as it's running.
-     # result_ai = ""
-     # The meta/llama-2-7b-chat model can stream output as it's running.
-     # for event in replicate.stream(
-            # "meta/llama-2-7b-chat",
-            # input={
-                # "top_k": 0,
-                # "top_p": 1,
-                # "prompt": prompt,
-                # "temperature": 0.75,
-                # "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
-                # "length_penalty": 1,
-                # "max_new_tokens": 800,
-                # "prompt_template": "<s>[INST] <<SYS>>\n{system_prompt}\n<</SYS>>\n\n{prompt} [/INST]",
-                # "presence_penalty": 0
-            # },
-     # ):
-        # result_ai = result_ai + (str(event))
-     
-     # st.write(result_ai)
-
 
 # This is the part where you can verbally ask about stuff
 audio = audiorecorder("Click to record", "Click to stop recording")
