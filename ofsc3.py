@@ -206,6 +206,7 @@ if len(audio) > 0:
           n_results=20,
      )
      augment_query = str(query_results["documents"])
+     st.write(augment_query)
      
      # The mistralai/mixtral-8x7b-instruct-v0.1 model can stream output as it's running.
      result_ai = ""
