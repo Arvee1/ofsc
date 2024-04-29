@@ -133,17 +133,17 @@ if len(audio) > 0:
      result_ai = ""
      # The mistralai/mixtral-8x7b-instruct-v0.1 model can stream output as it's running.
      for event in replicate.stream(
-         "mistralai/mixtral-8x7b-instruct-v0.1",
+         "meta/meta-llama-3-70b-instruct",
          input={
              "top_k": 50,
              "top_p": 0.9,
              "prompt": augment_query,
+             "max_tokens": 512,
+             "min_tokens": 0,
              "temperature": 0.6,
-             "system_prompt": "You are a very helpful assistant that provides your response in 1 sentence.",
-             "length_penalty": 1,
-             "max_new_tokens": 1024,
-             "prompt_template": "<s>[INST] {prompt} [/INST] ",
-             "presence_penalty": 0
+             "prompt_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nYou are a helpful assistant<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+             "presence_penalty": 1.15,
+             "frequency_penalty": 0.2
          },
      ):
          result_ai = result_ai + (str(event))
