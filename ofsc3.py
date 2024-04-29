@@ -199,6 +199,14 @@ if len(audio) > 0:
      st.write("what you said: " + text['text'])
      prompt = text['text']
 
+     query_results = collection.query(
+          query_texts=[prompt],
+          # include=["documents", "embeddings"],
+          include=["documents"],
+          n_results=100,
+     )
+     augment_query = str(query_results["documents"])
+     
      # The mistralai/mixtral-8x7b-instruct-v0.1 model can stream output as it's running.
      result_ai = ""
      # The meta/llama-2-7b-chat model can stream output as it's running.
@@ -207,7 +215,7 @@ if len(audio) > 0:
             input={
                 "top_k": 0,
                 "top_p": 1,
-                "prompt": prompt,
+                "prompt": augment_query,
                 "temperature": 0.75,
                 "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
                 "length_penalty": 1,
