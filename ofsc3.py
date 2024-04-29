@@ -67,7 +67,7 @@ if st.button("Submit to AI", type="primary"):
           query_texts=[prompt],
           # include=["documents", "embeddings"],
           include=["documents"],
-          n_results=20,
+          n_results=10,
      )
      augment_query = str(query_results["documents"])
 
@@ -202,7 +202,7 @@ if len(audio) > 0:
           query_texts=[prompt],
           # include=["documents", "embeddings"],
           include=["documents"],
-          n_results=20,
+          n_results=10,
      )
      augment_query = str(query_results["documents"])
      # st.write(augment_query)
