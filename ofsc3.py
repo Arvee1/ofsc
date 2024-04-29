@@ -137,7 +137,7 @@ if len(audio) > 0:
          input={
              "top_k": 50,
              "top_p": 0.9,
-             "prompt": augment_query,
+             "prompt": "Prompt: " + prompt + " " + augment_query,
              "max_tokens": 512,
              "min_tokens": 0,
              "temperature": 0.6,
