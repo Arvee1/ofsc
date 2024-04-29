@@ -202,7 +202,7 @@ if len(audio) > 0:
           query_texts=[prompt],
           # include=["documents", "embeddings"],
           include=["documents"],
-          n_results=15,
+          n_results=10,
      )
      augment_query = str(query_results["documents"])
      # st.write(augment_query)
@@ -220,7 +220,7 @@ if len(audio) > 0:
                 # "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
                 "system_prompt": "You are a helpful, respectful and honest assistant. Your answers will be concise.",
                 "length_penalty": 1,
-                "max_new_tokens": 2000,
+                "max_new_tokens": 4000,
                 "prompt_template": "<s>[INST] <<SYS>>\n{system_prompt}\n<</SYS>>\n\n{prompt} [/INST]",
                 "presence_penalty": 0
             },
