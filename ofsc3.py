@@ -217,7 +217,7 @@ if len(audio) > 0:
              "top_p": 0.9,
              "prompt": augment_query,
              "temperature": 0.6,
-             "system_prompt": "You are a very helpful assistant. You will summarize responses in max two sentences.",
+             "system_prompt": "You are a very helpful assistant that provides your response in 1 sentence.",
              "length_penalty": 1,
              "max_new_tokens": 1024,
              "prompt_template": "<s>[INST] {prompt} [/INST] ",
@@ -227,17 +227,17 @@ if len(audio) > 0:
          result_ai = result_ai + (str(event))
      st.write(result_ai)
 
-     output = replicate.run(
-         "afiaka87/tortoise-tts:e9658de4b325863c4fcdc12d94bb7c9b54cbfe351b7ca1b36860008172b91c71",
-         input={
-             "seed": 0,
-             "text": result_ai,
-             "preset": "fast",
-             "voice_a": "custom_voice",
-             "voice_b": "disabled",
-             "voice_c": "disabled",
-             "cvvp_amount": 0,
-             "custom_voice": "https://replicate.delivery/mgxm/671f3086-382f-4850-be82-db853e5f05a8/nixon.mp3"
-         }
-     )
-     print(output)
+     # output = replicate.run(
+         # "afiaka87/tortoise-tts:e9658de4b325863c4fcdc12d94bb7c9b54cbfe351b7ca1b36860008172b91c71",
+         # input={
+             # "seed": 0,
+             # "text": result_ai,
+             # "preset": "fast",
+             # "voice_a": "custom_voice",
+             # "voice_b": "disabled",
+             # "voice_c": "disabled",
+             # "cvvp_amount": 0,
+             # "custom_voice": "https://replicate.delivery/mgxm/671f3086-382f-4850-be82-db853e5f05a8/nixon.mp3"
+         # }
+     # )
+     # print(output)
