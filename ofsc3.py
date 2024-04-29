@@ -70,7 +70,8 @@ if st.button("Submit to AI", type="primary"):
           n_results=100,
      )
      augment_query = str(query_results["documents"])
-    
+
+     result_ai = ""
      # The meta/llama-2-7b-chat model can stream output as it's running.
      for event in replicate.stream(
             "meta/llama-2-7b-chat",
