@@ -217,7 +217,7 @@ if len(audio) > 0:
              "top_p": 0.9,
              "prompt": augment_query,
              "temperature": 0.6,
-             "system_prompt": "You are a very helpful, respectful and honest assistant. If the response is not relevant to the question respond to say you don't know.",
+             "system_prompt": "You are a very helpful assistant. You will summarize responses in max two sentences.",
              "length_penalty": 1,
              "max_new_tokens": 1024,
              "prompt_template": "<s>[INST] {prompt} [/INST] ",
@@ -225,22 +225,19 @@ if len(audio) > 0:
          },
      ):
          result_ai = result_ai + (str(event))
-     # The meta/llama-2-7b-chat model can stream output as it's running.
-     # for event in replicate.stream(
-            # "meta/llama-2-7b-chat",
-            # input={
-                # "top_k": 0,
-                # "top_p": 1,
-                # "prompt": augment_query,
-                # "temperature": 0.75,
-                # "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
-                # "system_prompt": "You are a helpful, respectful and honest assistant. Your answers will be concise.",
-                # "length_penalty": 1,
-                # "max_new_tokens": 4000,
-                # "prompt_template": "<s>[INST] <<SYS>>\n{system_prompt}\n<</SYS>>\n\n{prompt} [/INST]",
-                # "presence_penalty": 0
-            # },
-     # ):
-        # result_ai = result_ai + (str(event))
-     
      st.write(result_ai)
+
+     output = replicate.run(
+         "afiaka87/tortoise-tts:e9658de4b325863c4fcdc12d94bb7c9b54cbfe351b7ca1b36860008172b91c71",
+         input={
+             "seed": 0,
+             "text": result_ai,
+             "preset": "fast",
+             "voice_a": "custom_voice",
+             "voice_b": "disabled",
+             "voice_c": "disabled",
+             "cvvp_amount": 0,
+             "custom_voice": "https://replicate.delivery/mgxm/671f3086-382f-4850-be82-db853e5f05a8/nixon.mp3"
+         }
+     )
+     print(output)
