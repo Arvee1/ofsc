@@ -217,7 +217,7 @@ if len(audio) > 0:
              "top_p": 0.9,
              "prompt": augment_query,
              "temperature": 0.6,
-             "system_prompt": "You are a very helpful, respectful and honest assistant.",
+             "system_prompt": "You are a very helpful, respectful and honest assistant. If the response is not relevant to the question respond to say you don't know.",
              "length_penalty": 1,
              "max_new_tokens": 1024,
              "prompt_template": "<s>[INST] {prompt} [/INST] ",
