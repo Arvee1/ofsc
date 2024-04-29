@@ -67,7 +67,7 @@ if st.button("Submit to AI", type="primary"):
           query_texts=[prompt],
           # include=["documents", "embeddings"],
           include=["documents"],
-          n_results=10,
+          n_results=20,
      )
      augment_query = str(query_results["documents"])
 
