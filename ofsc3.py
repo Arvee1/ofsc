@@ -203,7 +203,7 @@ if len(audio) > 0:
           query_texts=[prompt],
           # include=["documents", "embeddings"],
           include=["documents"],
-          n_results=100,
+          n_results=20,
      )
      augment_query = str(query_results["documents"])
      
