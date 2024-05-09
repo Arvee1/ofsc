@@ -33,6 +33,30 @@ collection = client.get_or_create_collection(
      metadata={"hnsw:space": "cosine"},
  )
 
+# Load VectorDB
+# if st.sidebar.button("Load OFSC Facsheets into Vector DB if loading the page for the first time.", type="primary"):
+@st.cache_resource
+def create_vector():
+      with open("ofsc2.txt") as f:
+          hansard = f.read()
+          text_splitter = RecursiveCharacterTextSplitter(
+              chunk_size=500,
+              chunk_overlap=20,
+              length_function=len,
+              is_separator_regex=False,
+          )
+           
+      texts = text_splitter.create_documents([hansard])
+      documents = text_splitter.split_text(hansard)[:len(texts)]
+     
+      collection.add(
+           documents=documents,
+           ids=[f"id{i}" for i in range(len(documents))],
+      )
+      f.close()
+
+create_vector()
+
 # The UI Part
 st.title("👨‍💻 Wazzup!!!! What do you want to know about the OFSC?")
 # apikey = st.sidebar.text_area("Please enter enter your API Key.")
