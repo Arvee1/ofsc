@@ -37,7 +37,7 @@ collection = client.get_or_create_collection(
 # if st.sidebar.button("Load OFSC Facsheets into Vector DB if loading the page for the first time.", type="primary"):
 @st.cache_resource
 def create_vector():
-      with open("FEG Eligibility for FEG assistance factsheet.txt") as f:
+      with open("fegclaimant.txt") as f:
           hansard = f.read()
           text_splitter = RecursiveCharacterTextSplitter(
               chunk_size=500,
