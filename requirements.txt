@@ -1,4 +1,5 @@
 streamlit
+protobuf~=3.19.0
 langchain
 pysqlite3-binary
 sentence_transformers
