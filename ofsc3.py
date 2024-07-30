@@ -58,12 +58,12 @@ def create_vector():
 create_vector()
 
 # The UI Part
-st.title("👨‍💻 Wazzup!!!! What do you want to know about the OFSC?")
+st.title("👨‍💻 Wazzup!!!! What do you want to know about the FEG as a Claimant?")
 # apikey = st.sidebar.text_area("Please enter enter your API Key.")
-prompt = st.text_area("Please enter what you want to know about the OFSC Accreditation process.")
+prompt = st.text_area("Please enter what you want to know about the FEG Claimant Application process.")
 
 # Load VectorDB
-if st.sidebar.button("Load OFSC Facsheets into Vector DB if loading the page for the first time.", type="primary"):
+if st.sidebar.button("Load FEG Claimant Facsheets into Vector DB if loading the page for the first time.", type="primary"):
       with open("ofsc2.txt") as f:
           hansard = f.read()
           text_splitter = RecursiveCharacterTextSplitter(
